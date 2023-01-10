@@ -11,7 +11,7 @@
 <body>
     <div id="app">
         <!-- v-on: 하위컴포넌트에서 발생한 이벤트 이름="상위 컴포넌트의 메서드 이름"-->
-        <app-header v-on:pass="logText"></app-header>
+        <app-header v-on:pass="logText"></app-header>   // 3. 응답이 pass 메시지일 때 메서드 실행
         <app-content v-on:add="addNum"></app-content>
     </div>
 
@@ -20,7 +20,7 @@
         var appHeader = {
             template: '<button v-on:click="passEvent">click me</button>',   // 1. 클릭 시 passEvent 호출
             methods: {
-                passEvent: function() {             // 2. 호출된 메서드에서 emit을 통해 pass
+                passEvent: function() {            // 2. 호출된 메서드에서 emit을 통해 pass 메시지 전달
                     this.$emit('pass');
                 }
             }
