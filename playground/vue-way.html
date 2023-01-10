@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+
+    <script>
+        var div = document.querySelector('#app');
+        var viewModel = {};         // 객체: {}
+
+        (function(){        // 즉시실행함수
+            function init() {
+                Object.defineProperty(viewModel, 'str', {
+                    get: function () {    // 접근 시 실행
+                        console.log('접근함')
+                    },
+                    set: function (newValue) {    // 할당 시 실행
+                        console.log('할당함', newValue)
+                        render(newValue);
+                    }
+                });
+            }
+
+            function render(value) {
+                div.innerHTML = value;
+            }
+        
+            init();
+        })();
+    </script>
+</body>
+</html>
