@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- div: 레이아웃을 만들 때 사용 -->
+    <div id="app">
+        <!-- 전역 컴포넌트 -->
+        <app-header></app-header>       <!-- 3. 등록된 컴포넌트 화면에 그리기 -->
+        <!-- 지역 컴포넌트 -->
+        <app-footer></app-footer>
+    </div>
+    <div id="app2">
+        <app-header></app-header> 
+        <app-footer></app-footer>
+    </div>
+
+    <!-- 뷰 가져오기 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- 뷰 스크립트 -->
+    <script>
+        //////// 전역 컴포넌트 ////////
+        Vue.component('app-header', {       // 1. 컴포넌트가 등록되었다.
+            template: '<h1>Header</h1>'     // 1-1. 등록된 컴포넌트의 내용
+        })
+        Vue.component('app-content', {
+            template: '<div>content</div>'
+        })
+        new Vue({
+            el: '#app',                     // 2. id=app인 태그와 연결
+        });
+
+
+        //////// 지역 컴포넌트 ////////
+        new Vue({
+            el: '#app',
+            components: {
+                // key: value
+                // 컴포넌트 이름: 컴포넌트 내용
+                'app-footer': {
+                    template: '<footer>footer</footer>'
+                }
+            }
+        });
+        new Vue({
+            el: '#app2'
+        });
+    </script>
+</body>
+</html>
